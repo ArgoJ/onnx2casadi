@@ -4,6 +4,7 @@ Layer converter module for converting ONNX operations to CasADi symbolic operati
 from typing import Dict, Any, List
 import casadi as ca
 from onnx import ModelProto, NodeProto
+import onnx.numpy_helper as numpy_helper
 import numpy as np
 
 
@@ -141,7 +142,6 @@ class LayerConverter:
             ca.MX: CasADi constant matrix
         """
         # Convert ONNX tensor to numpy array
-        import onnx.numpy_helper as numpy_helper
         numpy_array = numpy_helper.to_array(initializer)
         
         # Convert to CasADi MX
